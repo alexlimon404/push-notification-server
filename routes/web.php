@@ -17,7 +17,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('dashboard', 'DashBoardController@index')->name('dashboard');
+Route::get('dashboard/push', 'Push\NotificationController@index')->name('push');
+Route::get('dashboard/push/statistics', 'Push\StatisticsController@index')->name('push_statistics');
+Route::get('dashboard/push/cron', 'Push\CronController@index')->name('push_cron');
+Route::get('dashboard/push/setting', 'Push\SettingController@index')->name('push_setting');
+
 
 /*
  * Disable registration on the site
