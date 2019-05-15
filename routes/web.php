@@ -14,3 +14,16 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+/*
+ * Disable registration on the site
+ * To remove, comment out the lines
+ * */
+Route::match(['post', 'get'], 'register', function () {
+    Auth::logout();
+    return redirect('/');
+});
