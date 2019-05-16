@@ -13,18 +13,41 @@
                     </div>
                     <div class="form-group">
                         <label for="message">Message</label>
-                        <input type="text" class="form-control" id="message"  placeholder="Enter your message">
+                        <input type="text" class="form-control" id="message" name='message' placeholder="Enter your message">
                         <small id="message" class="form-text text-muted">Maximum length of 100 letters</small>
                     </div>
                     <div class="form-group">
                         <label for="url">Url</label>
-                        <input type="text" class="form-control" id="url"  placeholder="Enter your url">
+                        <input type="text" class="form-control" id="url" name='url' placeholder="Enter your url">
                         <small id="url" class="form-text text-muted">unlim</small>
                     </div>
                     <div class="form-group">
                         <label for="icon">Icon</label>
-                        <input type="text" class="form-control" id="icon"  placeholder="Enter picture link">
+                        <input type="text" class="form-control" id="icon" name='icon' placeholder="Enter picture link">
                         <small id="icon" class="form-text text-muted">unlim</small>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label for="inputState">State</label>
+                            <select id="inputState" class="form-control">
+                                <option selected>all</option>
+                                <option>...</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputDevice">Device</label>
+                            <select id="inputDevice" class="form-control">
+                                <option selected>all</option>
+                                <option>...</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputBrowser">Browser</label>
+                            <select id="inputBrowser" class="form-control">
+                                <option selected>all</option>
+                                <option>...</option>
+                            </select>
+                        </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                     {{ method_field('post') }}

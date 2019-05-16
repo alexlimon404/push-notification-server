@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Push;
 
+use App\Models\Subscribers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 class NotificationController extends Controller
@@ -28,7 +29,6 @@ class NotificationController extends Controller
 
     public function makePush(Request $request)
     {
-        dd($request->title);
         return redirect('dashboard/push');
     }
 }
