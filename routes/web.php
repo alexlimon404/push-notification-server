@@ -20,6 +20,7 @@ Auth::routes();
 
 Route::get('dashboard', 'DashBoardController@index')->name('dashboard');
 Route::get('dashboard/push', 'Push\NotificationController@index')->name('push');
+Route::post('dashboard/make-push', 'Push\NotificationController@makePush');
 Route::get('dashboard/push/statistics', 'Push\StatisticsController@index')->name('push_statistics');
 Route::get('dashboard/push/cron', 'Push\CronController@index')->name('push_cron');
 Route::get('dashboard/push/setting', 'Push\SettingController@index')->name('push_setting');

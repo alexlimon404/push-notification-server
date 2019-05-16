@@ -25,4 +25,10 @@ class NotificationController extends Controller
     {
         return view('push.send_message');
     }
+
+    public function makePush(Request $request)
+    {
+        dd($request->title);
+        return redirect('dashboard/push');
+    }
 }
