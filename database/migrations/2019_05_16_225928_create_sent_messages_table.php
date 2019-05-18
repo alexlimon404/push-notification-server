@@ -25,6 +25,7 @@ class CreateSentMessagesTable extends Migration
                 ->references('id')
                 ->on('subscribers')
                 ->onDelete('cascade');
+            $table->integer('message_id')->nullable();
             $table->timestamps();
         });
     }

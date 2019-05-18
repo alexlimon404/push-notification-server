@@ -32,8 +32,8 @@ class NotificationController extends Controller
     {
         $countries = Country::all();
         $deviceTypes = ['desktop', 'mobile', 'tablet'];
-        $user = Auth::id();
-        $domainNames = ServerKey::where('user_id', $user)->get();
+        $userId = Auth::id();
+        $domainNames = ServerKey::where('user_id', $userId)->get();
         return view('push.send_message')
             ->with('countries', $countries)
             ->with('deviceTypes', $deviceTypes)
@@ -43,7 +43,9 @@ class NotificationController extends Controller
     public function makePush(Request $request)
     {
         //write message
+        $userId = Auth::id();
         $message = new PushMessage;
+        $message->user_id = $userId;
         $message->title = $request->title;
         $message->body = $request->body;
         $message->icon = $request->icon;
@@ -64,7 +66,15 @@ class NotificationController extends Controller
             array_push($subscriberTokens, $subscriber->token);
         };
         $serverKey = ServerKey::where('id', $request->domain)->first();
-        WorkerController::sendNotification($serverKey, $subscriberTokens, $message);
+        //sent message
+        $sendingResult = json_decode(WorkerController::sendNotification($serverKey, $subscriberTokens, $message), true);
+        //update status message
+        $updateMessage = PushMessage::find($message->id);
+        $updateMessage->multicast_id = $sendingResult['multicast_id'];
+        $updateMessage->success = $sendingResult['success'];
+        $updateMessage->failure = $sendingResult['failure'];
+        $updateMessage->canonical_ids = $sendingResult['canonical_ids'];
+        $updateMessage->save();
         return redirect('dashboard/push');
     }
 }
