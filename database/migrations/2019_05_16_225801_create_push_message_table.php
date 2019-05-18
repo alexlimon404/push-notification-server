@@ -24,7 +24,7 @@ class CreatePushMessageTable extends Migration
             $table->string('body')->nullable();
             $table->string('icon')->nullable();
             $table->string('click_action')->nullable();
-            $table->integer('multicast_id')->nullable();
+            $table->bigInteger('multicast_id')->nullable();
             $table->integer('success')->nullable();
             $table->integer('failure')->nullable();
             $table->integer('canonical_ids')->nullable();

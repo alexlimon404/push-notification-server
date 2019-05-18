@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Push;
 
+use App\Models\PushMessage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class StatisticsController extends Controller
 {
@@ -24,6 +26,9 @@ class StatisticsController extends Controller
      */
     public function index()
     {
-        return view('push.statistics');
+        $userId = Auth::id();
+        $messages = PushMessage::where('user_id', $userId)->get();
+        return view('push.statistics')
+            ->with('messages', $messages);
     }
 }
