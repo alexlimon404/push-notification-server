@@ -5,7 +5,15 @@
         <div class="card">
             <div class="card-header">Make Push</div>
             <div class="card-body">
-                <form action="make-push" method="post">
+                <form action="{{ route('make_push') }}" method="post">
+                    <div class="form-group">
+                        <label for="inputBrowser">Your domains</label>
+                        <select id="inputBrowser" class="form-control" name="domain">
+                            @foreach ($domainNames as $domainName)
+                                <option value="{{ $domainName->id }}">{{ $domainName->domain_name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <div class="form-group">
                         <label for="title">Title</label>
                         <input type="text" class="form-control" id="title" name='title' placeholder="Enter your title">
@@ -13,13 +21,13 @@
                     </div>
                     <div class="form-group">
                         <label for="message">Message</label>
-                        <input type="text" class="form-control" id="message" name='message' placeholder="Enter your message">
+                        <input type="text" class="form-control" id="message" name='body' placeholder="Enter your message">
                         <small id="message" class="form-text text-muted">Maximum length of 100 letters</small>
                     </div>
                     <div class="form-group">
-                        <label for="url">Url</label>
-                        <input type="text" class="form-control" id="url" name='url' placeholder="Enter your url">
-                        <small id="url" class="form-text text-muted">unlim</small>
+                        <label for="url">Click Action</label>
+                        <input type="text" class="form-control" id="url" name='click_action' placeholder="http://">
+                        <small id="url" class="form-text text-muted">click_action</small>
                     </div>
                     <div class="form-group">
                         <label for="icon">Icon</label>
@@ -28,22 +36,26 @@
                     </div>
                     <div class="row">
                         <div class="form-group col-md-4">
-                            <label for="inputState">State</label>
-                            <select id="inputState" class="form-control">
-                                <option selected>all</option>
-                                <option>...</option>
+                            <label for="inputState">Country</label>
+                            <select id="inputState" class="form-control" name="country">
+                                <option selected value="null">all</option>
+                                @foreach ($countries as $country)
+                                    <option value="{{ $country->id }}">{{ $country->value }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="inputDevice">Device</label>
-                            <select id="inputDevice" class="form-control">
-                                <option selected>all</option>
-                                <option>...</option>
+                            <label for="inputDevice">Device Type</label>
+                            <select id="inputDevice" class="form-control" name="device_type">
+                                <option value="0" selected>all</option>
+                                @foreach ($deviceTypes as $deviceType)
+                                    <option>{{ $deviceType }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputBrowser">Browser</label>
-                            <select id="inputBrowser" class="form-control">
+                            <select id="inputBrowser" class="form-control" name="browser">
                                 <option selected>all</option>
                                 <option>...</option>
                             </select>

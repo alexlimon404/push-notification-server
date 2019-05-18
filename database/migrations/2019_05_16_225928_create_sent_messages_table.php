@@ -15,13 +15,13 @@ class CreateSentMessagesTable extends Migration
     {
         Schema::create('sent_messages', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_push_message')->nullable()->unsigned();
-            $table->foreign('id_push_message')
+            $table->integer('push_message_id')->nullable()->unsigned();
+            $table->foreign('push_message_id')
                 ->references('id')
                 ->on('push_message')
                 ->onDelete('cascade');
-            $table->integer('id_subscribe')->nullable()->unsigned();
-            $table->foreign('id_subscribe')
+            $table->integer('subscriber_id')->nullable()->unsigned();
+            $table->foreign('subscriber_id')
                 ->references('id')
                 ->on('subscribers')
                 ->onDelete('cascade');

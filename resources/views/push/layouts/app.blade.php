@@ -12,6 +12,9 @@
                     <a class="nav-link" href="{{ route('push') }}">Make Push</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('push_subscribers') }}">Subscribers</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{ route('push_statistics') }}">Statistics</a>
                 </li>
                 <li class="nav-item">

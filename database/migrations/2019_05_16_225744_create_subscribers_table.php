@@ -15,12 +15,17 @@ class CreateSubscribersTable extends Migration
     {
         Schema::create('subscribers', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('token');
+            $table->string('token')->unique();
             $table->string('ip')->nullable();
             $table->string('comment')->nullable();
             $table->enum('device_types', ['desktop', 'mobile', 'tablet'])->nullable();
             $table->enum('connection_types', ['Wifi', 'Cellular'])->nullable();
-            $table->integer('browsers_id')->nullable(true)->unsigned();
+            $table->integer('server_key_id')->nullable()->unsigned();
+            $table->foreign('server_key_id')
+                ->references('id')
+                ->on('server_keys')
+                ->onDelete('cascade');
+            $table->integer('browsers_id')->nullable()->unsigned();
             $table->foreign('browsers_id')
                 ->references('id')
                 ->on('browsers')

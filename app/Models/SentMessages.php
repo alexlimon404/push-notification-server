@@ -9,7 +9,7 @@ class SentMessages extends Model
     protected $table = "sent_messages";
 
     protected $fillable = [
-        'id_push_message',
-        'id_subscribe',
+        'push_message_id',
+        'subscriber_id',
     ];
 }
