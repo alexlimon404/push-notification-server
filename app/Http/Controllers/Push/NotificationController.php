@@ -40,7 +40,7 @@ class NotificationController extends Controller
             ->with('domainNames', $domainNames);
     }
 
-    public function makePush(Request $request)
+    public function create(Request $request)
     {
         //write message
         $userId = Auth::id();
@@ -52,9 +52,10 @@ class NotificationController extends Controller
         $message->click_action = $request->click_action;
         $message->save();
         //get id subscribers
-        $subscribers = Subscribers::when($request->device_type, function ($query, $device_type) {
-            return $query->where('device_types', $device_type);
-        })
+        $subscribers = Subscribers::where('server_key_id', $request->domain)
+            ->when($request->device_type, function ($query, $device_type) {
+                return $query->where('device_types', $device_type);
+            })
             ->get();
         //write sent push
         $subscriberTokens = [];

@@ -4,7 +4,7 @@
     <div class="col-md-10">
         <div class="card">
             <div class="card-header">Statistics</div>
-            <table class="table">
+            <table class="table table-sm">
                 <thead class="thead-dark">
                 <tr>
                     <th scope="col">#</th>
@@ -23,7 +23,7 @@
                     <td scope="row">{{ $message->id }}</td>
                     <td>{{ $message->title }}</td>
                     <td>{{ $message->body }}</td>
-                    <td><img src="{{ $message->icon }}" width="60"></td>
+                    <td><img src="{{ $message->icon }}" width="50"></td>
                     <td><a href="{{ $message->click_action }}" target="_blank">link</a> </td>
                     <td>{{ $message->success }}</td>
                     <td>{{ $message->failure }}</td>

@@ -20,14 +20,14 @@ Auth::routes();
 
 Route::get('dashboard', 'DashBoardController@index')->name('dashboard');
 Route::get('dashboard/push', 'Push\NotificationController@index')->name('push');
-Route::post('dashboard/push/make-push', 'Push\NotificationController@makePush')->name('make_push');
+Route::post('dashboard/push/make-push', 'Push\NotificationController@create')->name('make_push');
 Route::get('dashboard/push/subscribers', 'Push\SubscribersController@index')->name('push_subscribers');
+Route::post('dashboard/push/subscribers', 'Push\SubscribersController@count')->name('push_subscribers_count');
 Route::get('dashboard/push/statistics', 'Push\StatisticsController@index')->name('push_statistics');
 Route::get('dashboard/push/cron', 'Push\CronController@index')->name('push_cron');
 Route::get('dashboard/push/setting', 'Push\SettingController@index')->name('push_setting');
 
-
-/*
+/* todo:
  * Disable registration on the site
  * To remove, comment out the lines
  * */

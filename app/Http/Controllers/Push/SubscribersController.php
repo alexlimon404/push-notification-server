@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers\Push;
 
+use App\Models\ServerKey;
+use App\Models\Subscribers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class SubscribersController extends Controller
 {
@@ -22,8 +26,29 @@ class SubscribersController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('push.subscribers');
+        $userId = Auth::id();
+        $domainNames = ServerKey::where('user_id', $userId)->get();
+        $deviceTypes = [];
+        return view('push.subscribers')
+            ->with('domainNames', $domainNames)
+            ->with('deviceTypes', $deviceTypes);
+    }
+
+    public function count(Request $request)
+    {
+        $userId = Auth::id();
+        $domainNames = ServerKey::where('user_id', $userId)->get();
+        $deviceTypes = DB::table('subscribers')
+            ->select(DB::raw('count(*) as device_count, device_types'))
+            ->where('server_key_id', 'like', $request->domain)
+            ->where('device_types', 'like', '%%')
+            ->groupBy('device_types')
+            ->get();
+        return view('push.subscribers')
+            ->with('domainNames', $domainNames)
+            ->with('deviceTypes', $deviceTypes);
+
     }
 }
