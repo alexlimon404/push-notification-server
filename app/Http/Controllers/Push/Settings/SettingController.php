@@ -24,6 +24,6 @@ class SettingController extends Controller
      */
     public function index()
     {
-        return view('push.setting');
+        return view('push.settings.my_profile');
     }
 }

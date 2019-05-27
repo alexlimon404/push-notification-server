@@ -1,0 +1,1 @@
+@extends('push.settings.layouts.app')

@@ -35,7 +35,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('push') }}">Push <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="{{ route('page_push') }}">Push <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">URL Shortener</a>

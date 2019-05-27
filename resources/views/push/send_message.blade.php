@@ -3,9 +3,9 @@
 @section('content_push')
     <div class="col-md-10">
         <div class="card">
-            <div class="card-header">Make Push</div>
+            <div class="card-header">Send Push</div>
             <div class="card-body">
-                <form action="{{ route('make_push') }}" method="post">
+                <form action="{{ route('send_push') }}" method="post">
                     <div class="form-group">
                         <label for="inputBrowser">Your domains</label>
                         <select id="inputBrowser" class="form-control" name="domain">
