@@ -1,5 +1,5 @@
 @extends('push.settings.layouts.app')
 
 @section('content_settings')
-    asdasd
+    Coming Soon!
 @endsection

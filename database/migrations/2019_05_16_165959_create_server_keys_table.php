@@ -23,7 +23,7 @@ class CreateServerKeysTable extends Migration
                 ->onDelete('cascade');
             $table->string('sender_id');
             $table->string('server_key');
-            $table->string('legacy_server_key');
+            $table->string('legacy_server_key')->nullable();
             $table->timestamps();
         });
     }

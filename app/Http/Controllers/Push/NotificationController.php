@@ -76,6 +76,6 @@ class NotificationController extends Controller
         $updateMessage->failure = $sendingResult['failure'];
         $updateMessage->canonical_ids = $sendingResult['canonical_ids'];
         $updateMessage->save();
-        return redirect('dashboard/push');
+        return redirect('dashboard/push/send-push');
     }
 }

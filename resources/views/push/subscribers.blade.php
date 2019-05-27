@@ -6,8 +6,8 @@
             <div class="card-header">Subscribers</div>
             <div class="card-body">
                 <form action="{{ route('push_subscribers_count') }}" method="post">
-                    <div class="form-group">
-                        <label for="inputBrowser">Your domains</label>
+                    <div class="form-inline">
+                        <label for="inputBrowser">Your domains:</label>
                         <select id="inputBrowser" class="form-control" name="domain">
                             @foreach ($domainNames as $domainName)
                                 <option value="{{ $domainName->id }}">{{ $domainName->domain_name }}</option>
