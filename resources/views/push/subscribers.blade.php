@@ -3,7 +3,7 @@
 @section('content_push')
     <div class="col-md-10">
         <div class="card">
-            <div class="card-header">Subscribers</div>
+            <div class="card-header">Subscribers @if(isset($domain->domain_name)) -> <span class="border border-success"> https://{{ $domain->domain_name}} </span>@endif</div>
             <div class="card-body">
                 <form action="{{ route('push_subscribers_count') }}" method="post">
                     <div class="form-inline">
@@ -13,13 +13,12 @@
                                 <option value="{{ $domainName->id }}">{{ $domainName->domain_name }}</option>
                             @endforeach
                         </select>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Count</button>
                             {{ method_field('post') }}
                             {{ csrf_field() }}
                     </div>
                 </form>
             </div>
-
             <div class="card-body row">
             <div class="card" style="width: 10rem;">
                 <div class="card-body">

@@ -40,6 +40,7 @@ class SubscribersController extends Controller
     {
         $userId = Auth::id();
         $domainNames = ServerKey::where('user_id', $userId)->get();
+        $domain = ServerKey::where('id', $request->domain)->first();
         $deviceTypes = DB::table('subscribers')
             ->select(DB::raw('count(*) as device_count, device_types'))
             ->where('server_key_id', 'like', $request->domain)
@@ -48,7 +49,8 @@ class SubscribersController extends Controller
             ->get();
         return view('push.subscribers')
             ->with('domainNames', $domainNames)
-            ->with('deviceTypes', $deviceTypes);
+            ->with('deviceTypes', $deviceTypes)
+            ->with('domain', $domain);
 
     }
 }

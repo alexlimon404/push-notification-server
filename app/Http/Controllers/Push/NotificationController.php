@@ -45,7 +45,7 @@ class NotificationController extends Controller
         //write message
         $userId = Auth::id();
         $message = new PushMessage;
-        $message->user_id = $userId;
+        $message->server_key_id = $request->domain;
         $message->title = $request->title;
         $message->body = $request->body;
         $message->icon = $request->icon;
@@ -76,6 +76,6 @@ class NotificationController extends Controller
         $updateMessage->failure = $sendingResult['failure'];
         $updateMessage->canonical_ids = $sendingResult['canonical_ids'];
         $updateMessage->save();
-        return redirect('dashboard/push/send-push');
+        return redirect()->route('page_push');
     }
 }

@@ -15,10 +15,10 @@ class CreatePushMessageTable extends Migration
     {
         Schema::create('push_message', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->nullable()->unsigned();
-            $table->foreign('user_id')
+            $table->integer('server_key_id')->nullable()->unsigned();
+            $table->foreign('server_key_id')
                 ->references('id')
-                ->on('users')
+                ->on('server_keys')
                 ->onDelete('cascade');
             $table->string('title')->nullable();
             $table->string('body')->nullable();

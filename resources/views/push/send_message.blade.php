@@ -61,7 +61,7 @@
                             </select>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Send</button>
                     {{ method_field('post') }}
                     {{ csrf_field() }}
                 </form>

@@ -24,6 +24,7 @@ Route::post('push/send-push', 'Push\NotificationController@create')->name('send_
 Route::get('push/subscribers', 'Push\SubscribersController@index')->name('push_subscribers');
 Route::post('push/subscribers', 'Push\SubscribersController@count')->name('push_subscribers_count');
 Route::get('push/statistics', 'Push\StatisticsController@index')->name('push_statistics');
+Route::post('push/statistics', 'Push\StatisticsController@showMessage')->name('show_message');
 Route::get('push/cron', 'Push\CronController@index')->name('push_cron');
 Route::get('push/settings/profile', 'Push\Settings\MyProfileController@index')->name('my_profile_settings');
 Route::get('push/settings/server', 'Push\Settings\MyServerController@index')->name('my_server_settings');
