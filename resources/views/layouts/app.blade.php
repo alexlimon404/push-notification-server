@@ -34,8 +34,11 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('page_push') }}">Push <span class="sr-only">(current)</span></a>
+                        <li class="nav-item {{ request()->is('*push/*') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('page_push') }}">Push <span class="sr-only"></span></a>
+                        </li>
+                        <li class="nav-item {{ request()->is('*img') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('image_index') }}">Gallery<span class="sr-only"></span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">URL Shortener</a>

@@ -22,7 +22,7 @@
             </div>
             <div class="card-body">
             <table class="table table-sm">
-                <thead class="thead-dark">
+                <thead class="thead">
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Title</th>

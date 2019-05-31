@@ -30,6 +30,13 @@ Route::get('push/settings/profile', 'Push\Settings\MyProfileController@index')->
 Route::get('push/settings/server', 'Push\Settings\MyServerController@index')->name('my_server_settings');
 Route::post('push/settings/server', 'Push\Settings\MyServerController@create')->name('create_server');
 
+Route::group(['prefix' => 'img'], function (){
+    Route::get('', 'ImageController@index')->name('image_index');
+    Route::post('upload', 'ImageController@upload');
+    Route::post('delete', 'ImageController@delete');
+    Route::post('preview', 'ImageController@delete');
+});
+
 /* todo:
  * Disable registration on the site
  * To remove, comment out the lines
