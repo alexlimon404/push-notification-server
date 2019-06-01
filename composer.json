@@ -1,10 +1,11 @@
 {
-    "name": "laravel/laravel",
+    "name": "mirrorbitmirror/push-server",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "Push Notification Server",
     "keywords": [
-        "framework",
-        "laravel"
+        "laravel",
+        "push",
+        "notification"
     ],
     "license": "MIT",
     "require": {

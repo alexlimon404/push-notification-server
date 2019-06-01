@@ -31,10 +31,10 @@ Route::get('push/settings/server', 'Push\Settings\MyServerController@index')->na
 Route::post('push/settings/server', 'Push\Settings\MyServerController@create')->name('create_server');
 
 Route::group(['prefix' => 'img'], function (){
-    Route::get('', 'ImageController@index')->name('image_index');
-    Route::post('upload', 'ImageController@upload');
-    Route::post('delete', 'ImageController@delete');
-    Route::post('preview', 'ImageController@delete');
+    Route::get('', 'Image\MyImageController@index')->name('image_page');
+    Route::get('upload', 'Image\UploadImageController@index')->name('upload_image_page');
+    Route::post('upload', 'Image\UploadImageController@upload')->name('upload_image_file');
+
 });
 
 /* todo:

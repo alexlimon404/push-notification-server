@@ -5,10 +5,10 @@
         <div class="row justify-content-center">
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link" href="">My Images</a>
+                    <a class="nav-link" href="{{ route('image_page') }}">My Images</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Upload Image</a>
+                    <a class="nav-link" href="{{ route('upload_image_page') }}">Upload Image</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="">Setting</a>

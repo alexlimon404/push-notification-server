@@ -38,7 +38,7 @@
                             <a class="nav-link" href="{{ route('page_push') }}">Push <span class="sr-only"></span></a>
                         </li>
                         <li class="nav-item {{ request()->is('*img') ? 'active' : '' }}">
-                            <a class="nav-link" href="{{ route('image_index') }}">Gallery<span class="sr-only"></span></a>
+                            <a class="nav-link" href="{{ route('image_page') }}">Gallery<span class="sr-only"></span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">URL Shortener</a>
