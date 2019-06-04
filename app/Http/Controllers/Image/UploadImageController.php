@@ -34,9 +34,9 @@ class UploadImageController extends Controller
     {
         $userId = Auth::id();
         $image = $request->file('imageFile');
-        $result = Image::upload($image, $userId);
+        $result = Image::uploadImage($image, $userId);
         return view('images.upload')
-            ->with('success','Image Upload successfully')
-            ->with('result', $result);
+            ->with('success', 'true')
+            ->with('imgUrl', url('/') . '/images/' . $result->image_path);
     }
 }

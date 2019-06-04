@@ -8,7 +8,7 @@ class Image extends Model
 {
     protected $table = "images";
 
-    public static function upload($image, $userId)
+    public static function uploadImage($image, $userId)
     {
         $nameImage = date('z')
             .'day_'
