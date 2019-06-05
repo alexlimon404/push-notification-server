@@ -5,7 +5,7 @@
         <div class="card">
             <div class="card-header">Send Push</div>
             <div class="card-body">
-                <form action="{{ route('send_push') }}" method="post">
+                <form enctype="multipart/form-data" action="{{ route('send_push') }}" method="post">
                     <div class="form-group">
                         <label for="inputBrowser">Your domains</label>
                         <select id="inputBrowser" class="form-control" name="domain">
@@ -29,10 +29,16 @@
                         <input type="text" class="form-control" id="url" name='click_action' placeholder="http://">
                         <small id="url" class="form-text text-muted">click_action</small>
                     </div>
-                    <div class="form-group">
+                    <div class="row">
+                    <div class="col">
                         <label for="icon">Icon</label>
                         <input type="text" class="form-control" id="icon" name='icon' placeholder="Enter picture link">
                         <small id="icon" class="form-text text-muted">unlim</small>
+                    </div>
+                    <div class="col">
+                        <label for="imageFile">Max Upload file 2mb</label>
+                        <input type="file" class="form-control-file" id="imageFile" name="imageFile">
+                    </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-4">
@@ -65,8 +71,22 @@
                     {{ method_field('post') }}
                     {{ csrf_field() }}
                 </form>
-
             </div>
         </div>
+        @if(session('domain'))
+        <div class="card">
+        <div class="alert alert-success" role="alert">
+            <u>Message Send:</u><b>Domain - </b>{{session('domain')}}, <b>Success - </b> @if(session('success')) {{session('success')}} @endif, <b>Failure - </b> @if(session('failure')) {{session('failure')}} @endif, <p><i>Param: Device Type - Tablet; Country - RU </i></p>
+        </div>
+        <div class="media">
+            <img src="@if(session('icon')) {{session('icon')}} @endif" class="mr-3" alt="" width="120">
+            <div class="media-body">
+                <h5 class="mt-0">Title: @if(session('title')) {{session('title')}} @endif</h5>
+                <p>Message: @if(session('body')) {{session('body')}} @endif</p>
+                @if(session('click_action')) <p><a href="{{session('click_action')}} ">Click Action</a></p>@endif
+            </div>
+        </div>
+        </div>
+        @endif
     </div>
 @endsection

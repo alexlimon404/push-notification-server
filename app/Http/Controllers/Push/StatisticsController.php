@@ -40,7 +40,6 @@ class StatisticsController extends Controller
         $userId = Auth::id();
         $domainNames = ServerKey::where('user_id', $userId)->get();
         $domain = ServerKey::where('id', $request->domain)->first();
-        //dd($domain->domain_name);
         $messages = PushMessage::where('server_key_id', $request->domain)->get();
         return view('push.statistics')
             ->with('domainNames', $domainNames)

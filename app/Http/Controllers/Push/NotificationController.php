@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Push;
 
+use App\Http\Requests\ImageRequest;
 use App\Models\Country;
+use App\Models\Image;
 use App\Models\PushMessage;
 use App\Models\SentMessages;
 use App\Models\ServerKey;
@@ -34,21 +36,28 @@ class NotificationController extends Controller
         $deviceTypes = ['desktop', 'mobile', 'tablet'];
         $userId = Auth::id();
         $domainNames = ServerKey::where('user_id', $userId)->get();
-        return view('push.send_message')
-            ->with('countries', $countries)
-            ->with('deviceTypes', $deviceTypes)
-            ->with('domainNames', $domainNames);
+        return view('push.send_message', [
+            'countries' => $countries,
+            'deviceTypes' => $deviceTypes,
+            'domainNames' => $domainNames
+        ]);
     }
 
     public function create(Request $request)
     {
-        //write message
         $userId = Auth::id();
+        $image = $request->file('imageFile');
+        $icon = $request->icon;
+        if($image) {
+            $result = Image::uploadImage($image, $userId);
+            $icon = url('/') . '/images/' . $result->image_path;
+        }
+        //write message
         $message = new PushMessage;
         $message->server_key_id = $request->domain;
         $message->title = $request->title;
         $message->body = $request->body;
-        $message->icon = $request->icon;
+        $message->icon = $icon;
         $message->click_action = $request->click_action;
         $message->save();
         //get id subscribers
@@ -76,6 +85,13 @@ class NotificationController extends Controller
         $updateMessage->failure = $sendingResult['failure'];
         $updateMessage->canonical_ids = $sendingResult['canonical_ids'];
         $updateMessage->save();
-        return redirect()->route('page_push');
+        return redirect()->route('page_push')
+            ->with('domain', $serverKey->domain_name)
+            ->with('success', $updateMessage->success)
+            ->with('failure', $updateMessage->failure)
+            ->with('title', $message->title)
+            ->with('body', $message->body)
+            ->with('icon', $message->icon)
+            ->with('click_action', $message->click_action);
     }
 }
