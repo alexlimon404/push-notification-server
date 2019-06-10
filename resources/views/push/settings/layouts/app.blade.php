@@ -9,6 +9,9 @@
             <li class="nav-item">
                 <a class="nav-link {{ request()->is('*/server') ? 'active' : '' }}" href="{{ route('my_server_settings') }}">My Server</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link {{ request()->is('*/api') ? 'active' : '' }}" href="{{ route('my_api_settings') }}">My Api</a>
+            </li>
         </ul>
         @yield('content_settings')
     </div>

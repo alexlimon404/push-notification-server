@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Push\Settings;
 
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
 class MyProfileController extends Controller
 {
@@ -24,6 +26,34 @@ class MyProfileController extends Controller
      */
     public function index()
     {
-        return view('push.settings.my_profile');
+        $user = auth()->user();
+        return view('push.settings.my_profile', [
+            'user' => $user
+        ]);
+    }
+
+    public function changeEmailAndPass(Request $request)
+    {
+        if (!Hash::check($request->get('old_password'), auth()->user()->password)) {
+            return redirect()->route('my_profile_settings')->with([
+                    'alert' => 'alert alert-danger',
+                    'message' => 'Old password is not correct'
+                ]);
+        }
+        if (!($request->get('password') === $request->get('password_confirmation'))) {
+            return redirect()->route('my_profile_settings')->with([
+                    'alert' => 'alert alert-danger',
+                    'message' => 'Passwords do not match'
+                ]);
+        }
+        $idUser = auth()->user()->id;
+        $user = User::find($idUser);
+        $user->email = $request->email;
+        $user->password = bcrypt($request->get('password'));
+        $user->save();
+        return redirect()->route('my_profile_settings')->with([
+            'alert' => 'alert alert-success',
+            'message' => 'Success'
+        ]);
     }
 }
