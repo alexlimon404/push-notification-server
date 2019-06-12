@@ -24,7 +24,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Device Type</h5>
                     @foreach($deviceTypes as $deviceType)
-                        <h6 class="card-subtitle mb-2 text-muted">{{ $deviceType->device_types }} - {{ $deviceType->device_count }}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ $deviceType->device_type }} - {{ $deviceType->device_count }}</h6>
                     @endforeach
                 </div>
             </div>
@@ -32,7 +32,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Device Type</h5>
                     @foreach($deviceTypes as $deviceType)
-                        <h6 class="card-subtitle mb-2 text-muted">{{ $deviceType->device_types }} - {{ $deviceType->device_count }}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ $deviceType->device_type }} - {{ $deviceType->device_count }}</h6>
                     @endforeach
                 </div>
             </div>

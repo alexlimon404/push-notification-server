@@ -18,45 +18,45 @@ class CreateSubscribersTable extends Migration
             $table->string('token')->unique();
             $table->string('ip')->nullable();
             $table->string('comment')->nullable();
-            $table->enum('device_types', ['desktop', 'mobile', 'tablet'])->nullable();
-            $table->enum('connection_types', ['Wifi', 'Cellular'])->nullable();
+            $table->enum('device_type', ['desktop', 'mobile', 'tablet'])->nullable();
+            $table->enum('connection_type', ['Wifi', 'Cellular'])->nullable();
             $table->integer('server_key_id')->nullable()->unsigned();
             $table->foreign('server_key_id')
                 ->references('id')
                 ->on('server_keys')
                 ->onDelete('cascade');
-            $table->integer('browsers_id')->nullable()->unsigned();
-            $table->foreign('browsers_id')
+            $table->integer('browser_id')->nullable()->unsigned();
+            $table->foreign('browser_id')
                 ->references('id')
                 ->on('browsers')
                 ->onDelete('cascade');
-            $table->integer('browser_versions_id')->nullable()->unsigned();
-            $table->foreign('browser_versions_id')
+            $table->integer('browser_version_id')->nullable()->unsigned();
+            $table->foreign('browser_version_id')
                 ->references('id')
                 ->on('browser_versions')
                 ->onDelete('cascade');
-            $table->integer('cities_id')->nullable()->unsigned();
-            $table->foreign('cities_id')
+            $table->integer('city_id')->nullable()->unsigned();
+            $table->foreign('city_id')
                 ->references('id')
                 ->on('cities')
                 ->onDelete('cascade');
-            $table->integer('countries_id')->nullable()->unsigned();
-            $table->foreign('countries_id')
+            $table->integer('country_id')->nullable()->unsigned();
+            $table->foreign('country_id')
                 ->references('id')
                 ->on('countries')
                 ->onDelete('cascade');
-            $table->integer('device_models_id')->nullable()->unsigned();
-            $table->foreign('device_models_id')
+            $table->integer('device_model_id')->nullable()->unsigned();
+            $table->foreign('device_model_id')
                 ->references('id')
                 ->on('device_models')
                 ->onDelete('cascade');
-            $table->integer('languages_id')->nullable()->unsigned();
-            $table->foreign('languages_id')
+            $table->integer('language_id')->nullable()->unsigned();
+            $table->foreign('language_id')
                 ->references('id')
                 ->on('languages')
                 ->onDelete('cascade');
-            $table->integer('operators_id')->nullable()->unsigned();
-            $table->foreign('operators_id')
+            $table->integer('operator_id')->nullable()->unsigned();
+            $table->foreign('operator_id')
                 ->references('id')
                 ->on('operators')
                 ->onDelete('cascade');
@@ -65,23 +65,23 @@ class CreateSubscribersTable extends Migration
                 ->references('id')
                 ->on('os')
                 ->onDelete('cascade');
-            $table->integer('os_versions_id')->nullable()->unsigned();
-            $table->foreign('os_versions_id')
+            $table->integer('os_version_id')->nullable()->unsigned();
+            $table->foreign('os_version_id')
                 ->references('id')
                 ->on('os_versions')
                 ->onDelete('cascade');
-            $table->integer('regions_id')->nullable()->unsigned();
-            $table->foreign('regions_id')
+            $table->integer('region_id')->nullable()->unsigned();
+            $table->foreign('region_id')
                 ->references('id')
                 ->on('regions')
                 ->onDelete('cascade');
-            $table->integer('sources_id')->nullable()->unsigned();
-            $table->foreign('sources_id')
+            $table->integer('source_id')->nullable()->unsigned();
+            $table->foreign('source_id')
                 ->references('id')
                 ->on('sources')
                 ->onDelete('cascade');
-            $table->integer('user_agents_id')->nullable()->unsigned();
-            $table->foreign('user_agents_id')
+            $table->integer('user_agent_id')->nullable()->unsigned();
+            $table->foreign('user_agent_id')
                 ->references('id')
                 ->on('user_agents')
                 ->onDelete('cascade');

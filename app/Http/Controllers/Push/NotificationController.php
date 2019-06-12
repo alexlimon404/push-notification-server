@@ -63,7 +63,7 @@ class NotificationController extends Controller
         //get id subscribers
         $subscribers = Subscribers::where('server_key_id', $request->domain)
             ->when($request->device_type, function ($query, $device_type) {
-                return $query->where('device_types', $device_type);
+                return $query->where('device_type', $device_type);
             })
             ->get();
         //write sent push

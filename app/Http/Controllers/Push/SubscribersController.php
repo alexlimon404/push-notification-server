@@ -42,10 +42,10 @@ class SubscribersController extends Controller
         $domainNames = ServerKey::where('user_id', $userId)->get();
         $domain = ServerKey::where('id', $request->domain)->first();
         $deviceTypes = DB::table('subscribers')
-            ->select(DB::raw('count(*) as device_count, device_types'))
+            ->select(DB::raw('count(*) as device_count, device_type'))
             ->where('server_key_id', 'like', $request->domain)
-            ->where('device_types', 'like', '%%')
-            ->groupBy('device_types')
+            ->where('device_type', 'like', '%%')
+            ->groupBy('device_type')
             ->get();
         return view('push.subscribers')
             ->with('domainNames', $domainNames)
