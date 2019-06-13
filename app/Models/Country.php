@@ -13,4 +13,13 @@ class Country extends Model
     ];
 
     public $timestamps = false;
+
+    public static function createOrNew ($country)
+    {
+        if($country) {
+            $country = Country::firstOrCreate(['value' => $country]);
+            return $country->id;
+        }
+        return null;
+    }
 }

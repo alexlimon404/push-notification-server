@@ -18,5 +18,5 @@ Route::group([
     'namespace' => 'Api'
 ], function () {
     Route::post('subscriber', 'SubscriberController@index');
-    Route::post('subscriber/{server_key_id}', 'SubscriberController@create');
+    Route::post('subscriber/{serverKeyId}', 'SubscriberController@create');
 });
