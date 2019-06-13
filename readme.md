@@ -36,6 +36,10 @@ composer install -vvv
 php artisan migrate
 ```
 
+### API Docs:
++ [Swagger API Docs - VIEW](https://generator.swagger.io/?url=https://raw.githubusercontent.com/mirrorbitmirror/push-server/master/swagger-api.json)
++ [Swagger API Docs - EDIT](https://editor.swagger.io/?url=https://raw.githubusercontent.com/mirrorbitmirror/push-server/master/swagger-api.json)
+
 ## Contributors
 
 - [AlexLimon](http://github.com/mirrorbitmirror)

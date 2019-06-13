@@ -1,0 +1,206 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "PushNotificationServer is a web application used to collect subscriber base, segmentation and sending push notifications.",
+    "version": "1.0.0",
+    "title": "Push Notification Server"
+  },
+  "host": "https://github.com/mirrorbitmirror/push-server",
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "user",
+      "description": "User Info"
+    },
+    {
+      "name": "subscriber",
+      "description": "Subscriber operations"
+    }
+  ],
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "paths" : {
+    "/user": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "User Info",
+        "description": "Get User Info",
+        "operationId": "login",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "api_token",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "examples": {
+              "": {
+                "data": {
+                  "id": 1,
+                  "name": "admin",
+                  "email": "admin@admin.ru",
+                  "email_verified_at": null,
+                  "api_token": "xxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                  "created_at": null,
+                  "updated_at": "2019-06-13 10:41:14"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/subscriber/{serverKeyId}": {
+    "post": {
+      "tags": [
+        "subscriber"
+      ],
+      "summary": "Subscriber",
+      "description": "Write subscriber info",
+      "operationId": "Subscriber",
+      "produces": [
+        "application/json"
+      ],
+      "parameters": [
+        {
+          "name": "api_token",
+          "in": "query",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "server_key_id",
+          "in": "query",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "name": "token",
+          "in": "query",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "ip",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "name": "device_type",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "name": "connection_type",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "name": "browser",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "name": "browser_version",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "name": "city",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "name": "country",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "name": "device_model",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "name": "language",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "name": "operator",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "name": "os",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "name": "os_version",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "name": "region",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "name": "source",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "name": "user_agent",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "success",
+          "examples": {
+            "": {
+              "data": {
+                "id": 1,
+                "name": "admin",
+                "email": "admin@admin.ru",
+                "email_verified_at": null,
+                "api_token": "xxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                "created_at": null,
+                "updated_at": "2019-06-13 10:41:14"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

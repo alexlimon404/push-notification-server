@@ -17,6 +17,6 @@ Route::group([
     'middleware' => ['auth:api'],
     'namespace' => 'Api'
 ], function () {
-    Route::post('subscriber', 'SubscriberController@index');
+    Route::post('user', 'SubscriberController@index');
     Route::post('subscriber/{serverKeyId}', 'SubscriberController@create');
 });
