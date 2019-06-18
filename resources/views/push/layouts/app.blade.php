@@ -18,7 +18,7 @@
                     <a class="nav-link" href="{{ route('push_statistics') }}">Statistics Push</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('push_cron') }}">Cron</a>
+                    <a class="nav-link" href="{{ route('push_ip_info') }}">Ip Info</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('my_profile_settings') }}">Settings</a>

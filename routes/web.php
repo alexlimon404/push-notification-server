@@ -28,7 +28,8 @@ Route::group(['prefix' => 'push'], function (){
     Route::post('subscribers', 'Push\SubscribersController@count')->name('push_subscribers_count');
     Route::get('statistics', 'Push\StatisticsController@index')->name('push_statistics');
     Route::post('statistics', 'Push\StatisticsController@showMessage')->name('show_message');
-    Route::get('cron', 'Push\CronController@index')->name('push_cron');
+    Route::get('ip-info', 'Push\IpInfoController@index')->name('push_ip_info');
+    Route::post('ip-info', 'Push\IpInfoController@search')->name('push_ip_info_search');
 
     //Settings
     Route::group(['prefix' => 'settings'], function (){
